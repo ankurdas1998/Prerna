@@ -1,0 +1,34 @@
+# Node modules
+/frontend/node_modules/
+
+# Build output
+/frontend/dist/
+
+# Environment variables
+/frontend/.env
+
+# Logs
+/frontend/*.log
+/frontend/logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor folders
+.vscode/
+/.idea/
+
+# npm cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lock files (optional, but usually committed)
+// Uncomment if you want to ignore package-lock.json or yarn.lock
+#/frontend/package-lock.json
+#/frontend/yarn.lock
+
+# Misc
+/frontend/.env.local
+/frontend/.env.*.local
