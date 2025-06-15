@@ -34,7 +34,10 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#booking" className="text-blue-200 hover:text-white transition duration-300">
+                <a
+                  href="#booking"
+                  className="text-blue-200 hover:text-white transition duration-300"
+                >
                   Book a Session
                 </a>
               </li>
@@ -44,10 +47,16 @@ export const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-blue-200">
               <li className="flex items-center">
-                <i className="fas fa-envelope mr-3"></i> hello@prerna.com
+                <a href="mailto:preronabordoloi19426@gmail.com" className="flex items-center">
+                  <i className="fas fa-envelope mr-3"></i>
+                  preronabordoloi19426@gmail.com
+                </a>
               </li>
               <li className="flex items-center">
-                <i className="fas fa-phone mr-3"></i> (+91) 97079-34599
+                <a href="tel:9707934599" className="flex items-center">
+                  <i className="fas fa-phone mr-3"></i>
+                  (+91) 97079-34599
+                </a>
               </li>
               <li className="flex items-center">
                 <i className="fas fa-map-marker-alt mr-3"></i> Golaghat, Assam
