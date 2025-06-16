@@ -29,9 +29,6 @@ export default function Form() {
     try {
       const response = await fetch(scriptURL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify(form),
       });
 
@@ -194,9 +191,9 @@ export default function Form() {
               <label>
                 <input
                   type="radio"
-                  name="communicationMode"
+                  name="sessionMode"
                   value="Offline"
-                  checked={form.communicationMode === "Offline"}
+                  checked={form.sessionMode === "Offline"}
                   onChange={handleChange}
                 />{" "}
                 Offline
@@ -206,7 +203,7 @@ export default function Form() {
                   type="radio"
                   name="communicationMode"
                   value="Online"
-                  checked={form.communicationMode === "Online"}
+                  checked={form.sessionMode === "Online"}
                   onChange={handleChange}
                 />{" "}
                 Online
