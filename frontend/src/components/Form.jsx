@@ -25,7 +25,7 @@ export default function Form() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append("name", form.name);
     formData.append("parentGuardian", form.parentGuardian);
@@ -41,15 +41,14 @@ export default function Form() {
     formData.append("consent2", form.consent2);
     formData.append("date", form.date);
     formData.append("signature", form.signature);
-    
+
     try {
       const response = await fetch(scriptURL, {
         method: "POST",
         body: formData,
       });
-
-      const result = await response.json();
-      if (result.status === "success") {
+  
+      if (response.ok) {
         alert("Form submitted successfully!");
         setForm({
           name: "",
@@ -75,6 +74,7 @@ export default function Form() {
     }
   };
 
+  
   return (
     <section id="booking" className="py-20 px-6 bg-gradient-to-b from-blue-50 to-blue-100">
       <div className="container mx-auto max-w-4xl">
