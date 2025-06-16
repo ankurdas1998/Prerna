@@ -16,6 +16,8 @@ export default function Form() {
     consent2: false,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm({ ...form, [name]: type === "checkbox" ? checked : value });
@@ -25,6 +27,7 @@ export default function Form() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch(scriptURL, {
@@ -56,6 +59,8 @@ export default function Form() {
       }
     } catch (error) {
       alert("Error: " + error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -188,7 +193,7 @@ export default function Form() {
           <div>
             <label className="block mb-1 font-medium text-gray-700">Session Mode Preference:</label>
             <div className="flex gap-4">
-              <label>
+              <label className="border border-transparent p-1.5 hover:border-blue-300 hover:cursor-pointer rounded-md">
                 <input
                   type="radio"
                   name="sessionMode"
@@ -198,10 +203,10 @@ export default function Form() {
                 />{" "}
                 Offline
               </label>
-              <label>
+              <label className="border border-transparent p-1.5 hover:border-blue-300 hover:cursor-pointer rounded-md">
                 <input
                   type="radio"
-                  name="communicationMode"
+                  name="sessionMode"
                   value="Online"
                   checked={form.sessionMode === "Online"}
                   onChange={handleChange}
@@ -217,7 +222,7 @@ export default function Form() {
               Have you worked with a coach or therapist before?
             </label>
             <div className="flex gap-4">
-              <label>
+              <label className="border border-transparent p-1.5 hover:border-blue-300 hover:cursor-pointer rounded-md">
                 <input
                   type="radio"
                   name="workedWithCoach"
@@ -227,7 +232,7 @@ export default function Form() {
                 />{" "}
                 Yes
               </label>
-              <label>
+              <label className="border border-transparent p-1.5 hover:border-blue-300 hover:cursor-pointer rounded-md">
                 <input
                   type="radio"
                   name="workedWithCoach"
@@ -269,12 +274,35 @@ export default function Form() {
           <button
             type="submit"
             disabled={!form.consent1 || !form.consent2}
-            className={`w-full text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ${
+            className={`relative overflow-hidden w-full text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ${
               !form.consent1 || !form.consent2
                 ? " bg-gray-300 hover:bg-gray-200 cursor-not-allowed"
-                : " bg-blue-500 hover:bg-blue-600"
+                : " bg-blue-500 hover:bg-blue-600 cursor-pointer"
             }`}
           >
+            <span
+              className={`absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold flex items-center justify-center ${
+                isLoading ? "block" : "hidden"
+              }`}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="animate-spin h-5 w-5 mr-3 text-white"
+              >
+                <circle
+                  stroke-width="4"
+                  stroke="currentColor"
+                  r="10"
+                  cy="12"
+                  cx="12"
+                  class="opacity-25"
+                ></circle>
+                <path d="M4 12a8 8 0 018-8v8H4z" fill="currentColor" class="opacity-75"></path>
+              </svg>
+              Loading...
+            </span>
             Submit
           </button>
         </form>
