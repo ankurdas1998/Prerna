@@ -26,13 +26,26 @@ export default function Form() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+    formData.append("name", form.name);
+    formData.append("parentGuardian", form.parentGuardian);
+    formData.append("dob", form.dob);
+    formData.append("gender", form.gender);
+    formData.append("phone", form.phone);
+    formData.append("altPhone", form.altPhone);
+    formData.append("email", form.email);
+    formData.append("address", form.address);
+    formData.append("sessionMode", form.sessionMode);
+    formData.append("workedWithCoach", form.workedWithCoach);
+    formData.append("consent1", form.consent1);
+    formData.append("consent2", form.consent2);
+    formData.append("date", form.date);
+    formData.append("signature", form.signature);
+    
     try {
       const response = await fetch(scriptURL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
+        body: formData,
       });
 
       const result = await response.json();
