@@ -44,7 +44,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+            <h3 className="text-xl font-bold mb-4">Contact</h3>
             <ul className="space-y-2 text-blue-200">
               <li className="flex items-center">
                 <a href="mailto:preronabordoloi19426@gmail.com" className="flex items-center">

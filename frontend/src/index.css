@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1530096044079-966a654d6ae4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  opacity: 0.5;
+  z-index: 0;
+}
+
 /* Custom CSS for animations and effects */
 .flash-card:hover {
   transform: translateY(-5px);
@@ -69,4 +78,54 @@
 }
 .delay-4 {
   animation-delay: 0.8s;
+}
+
+.icon-arrow-1 {
+  transition: transform 0.4s;
+  transform: translateX(100%);
+}
+.icon-arrow-2 {
+  transition: transform 0.5s;
+}
+.icon-arrow-3 {
+  transition: transform 0.5s;
+  transform: translateX(-100%);
+}
+
+/* On hover */
+.group:hover .icon-arrow-1 {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.2s;
+}
+.group:hover .icon-arrow-2 {
+  animation: color_anim 1s infinite 0.4s;
+}
+.group:hover .icon-arrow-3 {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+@keyframes color_anim {
+  0%,
+  100% {
+    color: white;
+  }
+  50% {
+    color: #ff135a;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .icon-arrow-1 {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+    margin-left: 8px;
+  }
+  .icon-arrow-2 {
+    animation: color_anim 1s infinite 0.4s;
+  }
+  .icon-arrow-3 {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.2s;
+  }
 }

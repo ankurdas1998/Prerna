@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
 import Form from "../components/Form";
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    setIsVisible(window.scrollY > 1000);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
   return (
     <main>
-      <section id="home" className="pt-32 pb-20 px-6 bg-gradient-to-b from-blue-100 to-blue-50">
+      <section
+        id="home"
+        className="relative pt-32 pb-20 px-6 bg-gradient-to-b from-blue-100 to-blue-50"
+      >
         <div className="container mx-auto flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-12 md:mb-0 fade-in">
             <h1 className="text-4xl md:text-5xl font-bold text-blue-800 mb-6">
@@ -47,9 +62,9 @@ export default function Home() {
                 Practicing just 10 minutes of mindfulness daily can reduce stress and improve focus.
                 Try focusing on your breath or a simple activity like drinking tea.
               </p>
-              <button className="mt-4 text-green-600 hover:text-green-700 font-medium flex items-center">
+              {/* <button className="mt-4 text-green-600 hover:text-green-700 font-medium flex items-center">
                 Learn more <i className="fas fa-arrow-right ml-2"></i>
-              </button>
+              </button> */}
             </div>
 
             {/* <!-- Card 2 --> */}
@@ -62,9 +77,9 @@ export default function Home() {
                 Quality sleep is foundational for mental health. Maintain a consistent sleep
                 schedule and create a calming bedtime routine for better rest.
               </p>
-              <button className="mt-4 text-blue-600 hover:text-blue-700 font-medium flex items-center">
+              {/* <button className="mt-4 text-blue-600 hover:text-blue-700 font-medium flex items-center">
                 Learn more <i className="fas fa-arrow-right ml-2"></i>
-              </button>
+              </button> */}
             </div>
 
             {/* <!-- Card 3 --> */}
@@ -77,9 +92,9 @@ export default function Home() {
                 Meaningful relationships are vital for mental wellbeing. Reach out to loved ones
                 regularly, even with a quick message or call.
               </p>
-              <button className="mt-4 text-purple-600 hover:text-purple-700 font-medium flex items-center">
+              {/* <button className="mt-4 text-purple-600 hover:text-purple-700 font-medium flex items-center">
                 Learn more <i className="fas fa-arrow-right ml-2"></i>
-              </button>
+              </button> */}
             </div>
 
             {/* <!-- Card 4 --> */}
@@ -92,9 +107,9 @@ export default function Home() {
                 Exercise releases endorphins that improve mood. A 30-minute walk can be as effective
                 for mild depression as medication.
               </p>
-              <button className="mt-4 text-yellow-600 hover:text-yellow-700 font-medium flex items-center">
+              {/* <button className="mt-4 text-yellow-600 hover:text-yellow-700 font-medium flex items-center">
                 Learn more <i className="fas fa-arrow-right ml-2"></i>
-              </button>
+              </button> */}
             </div>
 
             {/* <!-- Card 5 --> */}
@@ -107,9 +122,9 @@ export default function Home() {
                 Writing about your thoughts and feelings for 15 minutes daily can help process
                 emotions and reduce anxiety.
               </p>
-              <button className="mt-4 text-pink-600 hover:text-pink-700 font-medium flex items-center">
+              {/* <button className="mt-4 text-pink-600 hover:text-pink-700 font-medium flex items-center">
                 Learn more <i className="fas fa-arrow-right ml-2"></i>
-              </button>
+              </button> */}
             </div>
 
             {/* <!-- Card 6 --> */}
@@ -122,9 +137,9 @@ export default function Home() {
                 Treat yourself with the same kindness you'd offer a friend. Self-criticism often
                 exacerbates mental health challenges.
               </p>
-              <button className="mt-4 text-indigo-600 hover:text-indigo-700 font-medium flex items-center">
+              {/* <button className="mt-4 text-indigo-600 hover:text-indigo-700 font-medium flex items-center">
                 Learn more <i className="fas fa-arrow-right ml-2"></i>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -132,6 +147,18 @@ export default function Home() {
 
       {/* <!-- Booking Form Section --> */}
       <Form />
+
+      {/* Back to Top button */}
+      {isVisible && (
+        <button
+          id="backToTop"
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 bg-blue-400 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition duration-300 hover:bg-blue-500"
+        >
+          <i className="fas fa-arrow-up"></i>
+        </button>
+      )}
     </main>
   );
 }
