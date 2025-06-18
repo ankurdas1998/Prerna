@@ -47,7 +47,10 @@ export const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Contact</h3>
             <ul className="space-y-2 text-blue-200">
               <li className="flex items-center">
-                <a href="mailto:preronabordoloi19426@gmail.com" className="flex items-center">
+                <a
+                  href={`mailto:${"preronabordoloi19426"}@${"gmail.com"}`}
+                  className="flex items-center"
+                >
                   <i className="fas fa-envelope mr-3"></i>
                   preronabordoloi19426@gmail.com
                 </a>
